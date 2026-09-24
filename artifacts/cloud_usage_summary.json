@@ -1,0 +1,70 @@
+{
+  "guard_usd": 180.0,
+  "model": "gemini-2.5-flash-lite",
+  "note": "Local estimate uses the configured $0.01 per request guard; it is not a Cloud Billing invoice. It covers saved Vertex usage artifacts only.",
+  "project": "gen-lang-client-0576163520",
+  "recorded_local_estimated_cost_usd": 9.27,
+  "recorded_requests": 927,
+  "runs": [
+    {
+      "artifact": "gcp_smoke_final",
+      "local_estimated_cost_usd": 0.34,
+      "usage_files": 4,
+      "vertex_requests": 34
+    },
+    {
+      "artifact": "gcp_code_smoke",
+      "local_estimated_cost_usd": 0.34,
+      "usage_files": 4,
+      "vertex_requests": 34
+    },
+    {
+      "artifact": "gcp_code_smoke_final",
+      "local_estimated_cost_usd": 0.34,
+      "usage_files": 4,
+      "vertex_requests": 34
+    },
+    {
+      "artifact": "gcp_code_benchmark",
+      "local_estimated_cost_usd": 0.82,
+      "usage_files": 9,
+      "vertex_requests": 82
+    },
+    {
+      "artifact": "gcp_code_benchmark_final",
+      "local_estimated_cost_usd": 1.08,
+      "usage_files": 12,
+      "vertex_requests": 108
+    },
+    {
+      "artifact": "gcp_code_benchmark_long",
+      "local_estimated_cost_usd": 1.2,
+      "usage_files": 12,
+      "vertex_requests": 120
+    },
+    {
+      "artifact": "gcp_code_tuned_smoke",
+      "local_estimated_cost_usd": 0.4,
+      "usage_files": 4,
+      "vertex_requests": 40
+    },
+    {
+      "artifact": "gcp_code_benchmark_tuned",
+      "local_estimated_cost_usd": 1.2,
+      "usage_files": 12,
+      "vertex_requests": 120
+    },
+    {
+      "artifact": "vertex_frozen_code_comparison",
+      "local_estimated_cost_usd": 1.42,
+      "usage_files": 8,
+      "vertex_requests": 142
+    },
+    {
+      "artifact": "vertex_frozen_code_final100",
+      "local_estimated_cost_usd": 2.13,
+      "usage_files": 8,
+      "vertex_requests": 213
+    }
+  ]
+}

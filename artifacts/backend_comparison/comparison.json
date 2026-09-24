@@ -1,0 +1,79 @@
+{
+  "experiment": "staleroll_backend_comparison",
+  "frozen_gemini_artifact": "artifacts/vertex_frozen_code_comparison",
+  "frozen_gemini_mean_profile": {
+    "sample_seconds": 17.82022235837501,
+    "update_seconds": 4.899525000981453e-05,
+    "verifier_seconds": 0.021617802249994766,
+    "wall_clock_seconds": 17.872556963624998
+  },
+  "frozen_gemini_usage": {
+    "estimated_cost_usd": 1.42,
+    "lora_trainable_parameters": [
+      0
+    ],
+    "lora_updates": 0,
+    "requests": 142
+  },
+  "lora_artifact": "artifacts/lora_code_comparison_v2",
+  "lora_mean_profile": {
+    "sample_seconds": 0.13774437537499884,
+    "update_seconds": 0.9562831558750016,
+    "verifier_seconds": 0.005458504374997841,
+    "wall_clock_seconds": 4.111530427249999
+  },
+  "lora_usage": {
+    "estimated_cost_usd": 0.0,
+    "lora_trainable_parameters": [
+      1032
+    ],
+    "lora_updates": 103,
+    "requests": 0
+  },
+  "protocol": {
+    "max_kl": 0.2,
+    "max_lag": 0,
+    "seeds": 2,
+    "tasks": 50,
+    "ticks": 64
+  },
+  "rows": [
+    {
+      "delta_verified_pass_rate_lora_minus_frozen": -0.2578125,
+      "delta_verified_throughput_lora_minus_frozen": -0.07587301587301587,
+      "frozen_gemini_verified_pass_rate": 0.8046875,
+      "frozen_gemini_verified_throughput": 0.23666666666666666,
+      "lora_verified_pass_rate": 0.546875,
+      "lora_verified_throughput": 0.1607936507936508,
+      "mode": "sync"
+    },
+    {
+      "delta_verified_pass_rate_lora_minus_frozen": -0.3330745341614907,
+      "delta_verified_throughput_lora_minus_frozen": -0.12247656813266042,
+      "frozen_gemini_verified_pass_rate": 0.8773291925465838,
+      "frozen_gemini_verified_throughput": 0.3030821917808219,
+      "lora_verified_pass_rate": 0.5442546583850931,
+      "lora_verified_throughput": 0.1806056236481615,
+      "mode": "naive_async"
+    },
+    {
+      "delta_verified_pass_rate_lora_minus_frozen": -0.3548136645962734,
+      "delta_verified_throughput_lora_minus_frozen": -0.1290555155010815,
+      "frozen_gemini_verified_pass_rate": 0.8990683229813665,
+      "frozen_gemini_verified_throughput": 0.309661139149243,
+      "lora_verified_pass_rate": 0.5442546583850931,
+      "lora_verified_throughput": 0.1806056236481615,
+      "mode": "stale_filter"
+    },
+    {
+      "delta_verified_pass_rate_lora_minus_frozen": -0.3330745341614907,
+      "delta_verified_throughput_lora_minus_frozen": -0.12247656813266042,
+      "frozen_gemini_verified_pass_rate": 0.8773291925465838,
+      "frozen_gemini_verified_throughput": 0.3030821917808219,
+      "lora_verified_pass_rate": 0.5442546583850931,
+      "lora_verified_throughput": 0.1806056236481615,
+      "mode": "random_filter"
+    }
+  ],
+  "task_domain": "code"
+}

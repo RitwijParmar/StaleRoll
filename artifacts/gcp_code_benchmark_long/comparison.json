@@ -1,0 +1,722 @@
+{
+  "experiment": "staleroll",
+  "modes": {
+    "naive_async": {
+      "accept_rate": 1.0,
+      "accept_rate_std": 0.0,
+      "compute_seconds_per_solved_task": 6.989247311827957,
+      "compute_seconds_per_solved_task_std": 1.0001734154179343,
+      "mean_importance_weight": 0.9853530741468473,
+      "mean_importance_weight_std": 0.014790073007183128,
+      "mean_kl": 0.07124150715789294,
+      "mean_kl_std": 0.00857973172473511,
+      "mean_lag": 0.20991285403050108,
+      "mean_lag_std": 0.022155641639605338,
+      "p95_kl": 0.17455902403217113,
+      "p95_kl_std": 0.07057792199227057,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.029131652661064423,
+      "proxy_hacking_rate_std": 0.029415766034341907,
+      "quality_retention_vs_sync": 1.0562028201110953,
+      "rollouts_per_tick": 0.3341750841750842,
+      "rollouts_per_tick_std": 0.02593084478240634,
+      "seeds": 3,
+      "verified_pass_rate": 0.8654995331465919,
+      "verified_pass_rate_seed_values": [
+        0.8857142857142857,
+        0.9166666666666666,
+        0.7941176470588235
+      ],
+      "verified_pass_rate_std": 0.0637263110319489,
+      "verified_rollouts_per_tick": 0.29012345679012347,
+      "verified_rollouts_per_tick_std": 0.0417523125261379,
+      "verified_throughput_multiplier_vs_sync": 1.1638847674781965
+    },
+    "random_filter": {
+      "accept_rate": 0.7603952692187986,
+      "accept_rate_std": 0.09882456700536665,
+      "compute_seconds_per_solved_task": 6.8,
+      "compute_seconds_per_solved_task_std": 0.692820323027551,
+      "mean_importance_weight": 0.9884045355556061,
+      "mean_importance_weight_std": 0.005693745308379932,
+      "mean_kl": 0.06849747504770415,
+      "mean_kl_std": 0.013493882903268384,
+      "mean_lag": 0.20991285403050108,
+      "mean_lag_std": 0.022155641639605338,
+      "p95_kl": 0.20132148167055366,
+      "p95_kl_std": 0.08989793703863366,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.019327731092436976,
+      "proxy_hacking_rate_std": 0.016743578861488466,
+      "quality_retention_vs_sync": 1.080472867112947,
+      "rollouts_per_tick": 0.3341750841750842,
+      "rollouts_per_tick_std": 0.02593084478240634,
+      "seeds": 3,
+      "verified_pass_rate": 0.8853874883286648,
+      "verified_pass_rate_seed_values": [
+        0.8571428571428571,
+        0.9166666666666666,
+        0.8823529411764706
+      ],
+      "verified_pass_rate_std": 0.029877706276935936,
+      "verified_rollouts_per_tick": 0.29629629629629634,
+      "verified_rollouts_per_tick_std": 0.03207501495497919,
+      "verified_throughput_multiplier_vs_sync": 1.188648273169222
+    },
+    "stale_filter": {
+      "accept_rate": 1.0,
+      "accept_rate_std": 0.0,
+      "compute_seconds_per_solved_task": 6.989247311827957,
+      "compute_seconds_per_solved_task_std": 1.0001734154179343,
+      "mean_importance_weight": 0.9362936038961492,
+      "mean_importance_weight_std": 0.007944472062129,
+      "mean_kl": 0.0686683900646151,
+      "mean_kl_std": 0.010567739029031426,
+      "mean_lag": 0.20991285403050108,
+      "mean_lag_std": 0.022155641639605338,
+      "p95_kl": 0.1793815158595307,
+      "p95_kl_std": 0.059689963722154744,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.029131652661064423,
+      "proxy_hacking_rate_std": 0.029415766034341907,
+      "quality_retention_vs_sync": 1.0562028201110953,
+      "rollouts_per_tick": 0.3341750841750842,
+      "rollouts_per_tick_std": 0.02593084478240634,
+      "seeds": 3,
+      "verified_pass_rate": 0.8654995331465919,
+      "verified_pass_rate_seed_values": [
+        0.8857142857142857,
+        0.9166666666666666,
+        0.7941176470588235
+      ],
+      "verified_pass_rate_std": 0.0637263110319489,
+      "verified_rollouts_per_tick": 0.29012345679012347,
+      "verified_rollouts_per_tick_std": 0.0417523125261379,
+      "verified_throughput_multiplier_vs_sync": 1.1638847674781965
+    },
+    "sync": {
+      "accept_rate": 0.9444444444444445,
+      "accept_rate_std": 0.012028130608117225,
+      "compute_seconds_per_solved_task": 8.05999183279504,
+      "compute_seconds_per_solved_task_std": 0.6543817546095512,
+      "mean_importance_weight": 1.0,
+      "mean_importance_weight_std": 0.0,
+      "mean_kl": 0.07166806776743412,
+      "mean_kl_std": 0.010999797532201164,
+      "mean_lag": 0.0,
+      "mean_lag_std": 0.0,
+      "p95_kl": 0.25747742225589115,
+      "p95_kl_std": 0.033368384507020975,
+      "p95_lag": 0.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.052083333333333336,
+      "proxy_hacking_rate_std": 0.018042195912175804,
+      "quality_retention_vs_sync": 1.0,
+      "rollouts_per_tick": 0.30432949198260323,
+      "rollouts_per_tick_std": 0.01964194335764921,
+      "seeds": 3,
+      "verified_pass_rate": 0.8194444444444443,
+      "verified_pass_rate_seed_values": [
+        0.7604166666666666,
+        0.8541666666666666,
+        0.84375
+      ],
+      "verified_pass_rate_std": 0.05138419648246092,
+      "verified_rollouts_per_tick": 0.2492716331520839,
+      "verified_rollouts_per_tick_std": 0.020933853174356757,
+      "verified_throughput_multiplier_vs_sync": 1.0
+    }
+  },
+  "policy_backend": "vertex",
+  "runs": [
+    {
+      "mode": "sync",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 394,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.9375,
+        "accepted": 90,
+        "compute_seconds_per_solved_task": 8.602739726027398,
+        "logical_ticks": 314,
+        "mean_importance_weight": 1.0,
+        "mean_kl": 0.0840816368224682,
+        "mean_lag": 0.0,
+        "p95_kl": 0.29400693044603043,
+        "p95_lag": 0.0,
+        "proxy_hacking_rate": 0.0625,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9375,
+            "count": 96,
+            "verified_rate": 0.7604166666666666
+          }
+        },
+        "rollouts_per_tick": 0.3057324840764331,
+        "stale_rejected": 0,
+        "trajectories": 96,
+        "verified": 73,
+        "verified_pass_rate": 0.7604166666666666,
+        "verified_pass_rate_ci95": [
+          0.6660743118836168,
+          0.8347189446347083
+        ],
+        "verified_rollouts_per_tick": 0.23248407643312102,
+        "worker_failures": 6
+      }
+    },
+    {
+      "mode": "sync",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 396,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 0.9583333333333334,
+        "accepted": 92,
+        "compute_seconds_per_solved_task": 8.24390243902439,
+        "logical_ticks": 338,
+        "mean_importance_weight": 1.0,
+        "mean_kl": 0.06779002179036539,
+        "mean_lag": 0.0,
+        "p95_kl": 0.24982611991547252,
+        "p95_lag": 0.0,
+        "proxy_hacking_rate": 0.03125,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9583333333333334,
+            "count": 96,
+            "verified_rate": 0.8541666666666666
+          }
+        },
+        "rollouts_per_tick": 0.28402366863905326,
+        "stale_rejected": 0,
+        "trajectories": 96,
+        "verified": 82,
+        "verified_pass_rate": 0.8541666666666666,
+        "verified_pass_rate_ci95": [
+          0.7699800750432338,
+          0.9110987538216883
+        ],
+        "verified_rollouts_per_tick": 0.24260355029585798,
+        "worker_failures": 4
+      }
+    },
+    {
+      "mode": "sync",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 390,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 0.9375,
+        "accepted": 90,
+        "compute_seconds_per_solved_task": 7.333333333333333,
+        "logical_ticks": 297,
+        "mean_importance_weight": 1.0,
+        "mean_kl": 0.06313254468946879,
+        "mean_lag": 0.0,
+        "p95_kl": 0.2285992164061704,
+        "p95_lag": 0.0,
+        "proxy_hacking_rate": 0.0625,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9375,
+            "count": 96,
+            "verified_rate": 0.84375
+          }
+        },
+        "rollouts_per_tick": 0.32323232323232326,
+        "stale_rejected": 0,
+        "trajectories": 96,
+        "verified": 81,
+        "verified_pass_rate": 0.84375,
+        "verified_pass_rate_ci95": [
+          0.7580833433259717,
+          0.9029637552782173
+        ],
+        "verified_rollouts_per_tick": 0.2727272727272727,
+        "worker_failures": 6
+      }
+    },
+    {
+      "mode": "naive_async",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 394,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 35,
+        "compute_seconds_per_solved_task": 6.967741935483871,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9802107560987539,
+        "mean_kl": 0.07256232837940631,
+        "mean_lag": 0.2,
+        "p95_kl": 0.18767632175674032,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.02857142857142857,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 28,
+            "verified_rate": 0.9285714285714286
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 7,
+            "verified_rate": 0.7142857142857143
+          }
+        },
+        "rollouts_per_tick": 0.32407407407407407,
+        "stale_rejected": 0,
+        "trajectories": 35,
+        "verified": 31,
+        "verified_pass_rate": 0.8857142857142857,
+        "verified_pass_rate_ci95": [
+          0.7404820521187976,
+          0.9546489414551025
+        ],
+        "verified_rollouts_per_tick": 0.28703703703703703,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "naive_async",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 398,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 36,
+        "compute_seconds_per_solved_task": 6.0,
+        "logical_ticks": 99,
+        "mean_importance_weight": 0.9738205569346428,
+        "mean_kl": 0.062077957718208086,
+        "mean_lag": 0.19444444444444445,
+        "p95_kl": 0.09834267316895348,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 29,
+            "verified_rate": 0.9310344827586207
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.36363636363636365,
+        "stale_rejected": 0,
+        "trajectories": 36,
+        "verified": 33,
+        "verified_pass_rate": 0.9166666666666666,
+        "verified_pass_rate_ci95": [
+          0.7817298972308114,
+          0.9712519107287082
+        ],
+        "verified_rollouts_per_tick": 0.3333333333333333,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "naive_async",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 390,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 34,
+        "compute_seconds_per_solved_task": 8.0,
+        "logical_ticks": 108,
+        "mean_importance_weight": 1.0020279094071451,
+        "mean_kl": 0.07908423537606445,
+        "mean_lag": 0.23529411764705882,
+        "p95_kl": 0.23765807717081952,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.058823529411764705,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 26,
+            "verified_rate": 0.8461538461538461
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 8,
+            "verified_rate": 0.625
+          }
+        },
+        "rollouts_per_tick": 0.3148148148148148,
+        "stale_rejected": 0,
+        "trajectories": 34,
+        "verified": 27,
+        "verified_pass_rate": 0.7941176470588235,
+        "verified_pass_rate_ci95": [
+          0.6320128389178601,
+          0.8965060397764868
+        ],
+        "verified_rollouts_per_tick": 0.25,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "stale_filter",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 390,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 35,
+        "compute_seconds_per_solved_task": 6.967741935483871,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9284504594596358,
+        "mean_kl": 0.07283782770640991,
+        "mean_lag": 0.2,
+        "p95_kl": 0.19548326990611106,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.02857142857142857,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 28,
+            "verified_rate": 0.9285714285714286
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 7,
+            "verified_rate": 0.7142857142857143
+          }
+        },
+        "rollouts_per_tick": 0.32407407407407407,
+        "stale_rejected": 0,
+        "trajectories": 35,
+        "verified": 31,
+        "verified_pass_rate": 0.8857142857142857,
+        "verified_pass_rate_ci95": [
+          0.7404820521187976,
+          0.9546489414551025
+        ],
+        "verified_rollouts_per_tick": 0.28703703703703703,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "stale_filter",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 394,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 36,
+        "compute_seconds_per_solved_task": 6.0,
+        "logical_ticks": 99,
+        "mean_importance_weight": 0.9360946845955532,
+        "mean_kl": 0.05665195686506673,
+        "mean_lag": 0.19444444444444445,
+        "p95_kl": 0.11329235916997436,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 29,
+            "verified_rate": 0.9310344827586207
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.36363636363636365,
+        "stale_rejected": 0,
+        "trajectories": 36,
+        "verified": 33,
+        "verified_pass_rate": 0.9166666666666666,
+        "verified_pass_rate_ci95": [
+          0.7817298972308114,
+          0.9712519107287082
+        ],
+        "verified_rollouts_per_tick": 0.3333333333333333,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "stale_filter",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 390,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 34,
+        "compute_seconds_per_solved_task": 8.0,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9443356676332589,
+        "mean_kl": 0.07651538562236868,
+        "mean_lag": 0.23529411764705882,
+        "p95_kl": 0.22936891850250668,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.058823529411764705,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 26,
+            "verified_rate": 0.8461538461538461
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 8,
+            "verified_rate": 0.625
+          }
+        },
+        "rollouts_per_tick": 0.3148148148148148,
+        "stale_rejected": 0,
+        "trajectories": 34,
+        "verified": 27,
+        "verified_pass_rate": 0.7941176470588235,
+        "verified_pass_rate_ci95": [
+          0.6320128389178601,
+          0.8965060397764868
+        ],
+        "verified_rollouts_per_tick": 0.25,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "random_filter",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 394,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.8285714285714286,
+        "accepted": 29,
+        "compute_seconds_per_solved_task": 7.2,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9949740378075681,
+        "mean_kl": 0.08293271392450619,
+        "mean_lag": 0.2,
+        "p95_kl": 0.253581190674581,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.02857142857142857,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.8571428571428571,
+            "count": 28,
+            "verified_rate": 0.8928571428571429
+          },
+          "1": {
+            "accept_rate": 0.7142857142857143,
+            "count": 7,
+            "verified_rate": 0.7142857142857143
+          }
+        },
+        "rollouts_per_tick": 0.32407407407407407,
+        "stale_rejected": 0,
+        "trajectories": 35,
+        "verified": 30,
+        "verified_pass_rate": 0.8571428571428571,
+        "verified_pass_rate_ci95": [
+          0.7062411969132573,
+          0.9373986119514649
+        ],
+        "verified_rollouts_per_tick": 0.2777777777777778,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "random_filter",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 394,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 0.8055555555555556,
+        "accepted": 29,
+        "compute_seconds_per_solved_task": 6.0,
+        "logical_ticks": 99,
+        "mean_importance_weight": 0.9848962542128767,
+        "mean_kl": 0.05620021145499802,
+        "mean_lag": 0.19444444444444445,
+        "p95_kl": 0.09751710628226141,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.7931034482758621,
+            "count": 29,
+            "verified_rate": 0.9310344827586207
+          },
+          "1": {
+            "accept_rate": 0.8571428571428571,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.36363636363636365,
+        "stale_rejected": 0,
+        "trajectories": 36,
+        "verified": 33,
+        "verified_pass_rate": 0.9166666666666666,
+        "verified_pass_rate_ci95": [
+          0.7817298972308114,
+          0.9712519107287082
+        ],
+        "verified_rollouts_per_tick": 0.3333333333333333,
+        "worker_failures": 0
+      }
+    },
+    {
+      "mode": "random_filter",
+      "policy_usage": {
+        "vertex_budget_guard_usd": 180.0,
+        "vertex_estimated_cost_usd": 0.09999999999999999,
+        "vertex_input_tokens": 3058,
+        "vertex_location": "us-central1",
+        "vertex_model": "gemini-2.5-flash-lite",
+        "vertex_model_version": "gemini-2.5-flash-lite",
+        "vertex_output_tokens": 392,
+        "vertex_project": "gen-lang-client-0576163520",
+        "vertex_requests": 10
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 0.6470588235294118,
+        "accepted": 22,
+        "compute_seconds_per_solved_task": 7.2,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9853433146463739,
+        "mean_kl": 0.06635949976360823,
+        "mean_lag": 0.23529411764705882,
+        "p95_kl": 0.2528661480548186,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.029411764705882353,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.6538461538461539,
+            "count": 26,
+            "verified_rate": 0.9615384615384616
+          },
+          "1": {
+            "accept_rate": 0.625,
+            "count": 8,
+            "verified_rate": 0.625
+          }
+        },
+        "rollouts_per_tick": 0.3148148148148148,
+        "stale_rejected": 0,
+        "trajectories": 34,
+        "verified": 30,
+        "verified_pass_rate": 0.8823529411764706,
+        "verified_pass_rate_ci95": [
+          0.7337882520370121,
+          0.9532862902656388
+        ],
+        "verified_rollouts_per_tick": 0.2777777777777778,
+        "worker_failures": 0
+      }
+    }
+  ],
+  "task_domain": "code"
+}

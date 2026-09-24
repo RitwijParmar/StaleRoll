@@ -1,0 +1,975 @@
+{
+  "experiment": "staleroll",
+  "modes": {
+    "naive_async": {
+      "accept_rate": 1.0,
+      "accept_rate_std": 0.0,
+      "compute_seconds_per_solved_task": 9.00923076923077,
+      "compute_seconds_per_solved_task_std": 1.5629194348280766,
+      "mean_importance_weight": 0.9944535682987441,
+      "mean_importance_weight_std": 0.011719330827142485,
+      "mean_kl": 0.04477097916566954,
+      "mean_kl_std": 0.0029355030296788855,
+      "mean_lag": 0.20991285403050108,
+      "mean_lag_std": 0.022155641639605338,
+      "p95_kl": 0.08748486061476686,
+      "p95_kl_std": 0.017671658202423984,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.058263305322128846,
+      "proxy_hacking_rate_std": 0.058831532068683814,
+      "quality_retention_vs_sync": 0.9578893626416085,
+      "rollouts_per_tick": 0.3341750841750842,
+      "rollouts_per_tick_std": 0.02593084478240634,
+      "seeds": 3,
+      "verified_pass_rate": 0.6751789604730781,
+      "verified_pass_rate_seed_values": [
+        0.7428571428571429,
+        0.6944444444444444,
+        0.5882352941176471
+      ],
+      "verified_pass_rate_std": 0.0790907591403263,
+      "verified_rollouts_per_tick": 0.22615039281705948,
+      "verified_rollouts_per_tick_std": 0.035962895555582755,
+      "verified_throughput_multiplier_vs_sync": 1.054432540835746
+    },
+    "random_filter": {
+      "accept_rate": 0.7603952692187986,
+      "accept_rate_std": 0.09882456700536665,
+      "compute_seconds_per_solved_task": 9.00923076923077,
+      "compute_seconds_per_solved_task_std": 1.5629194348280766,
+      "mean_importance_weight": 0.9993829366262362,
+      "mean_importance_weight_std": 0.019028173494776618,
+      "mean_kl": 0.04461781972654999,
+      "mean_kl_std": 0.0027073207119122557,
+      "mean_lag": 0.20991285403050108,
+      "mean_lag_std": 0.022155641639605338,
+      "p95_kl": 0.08784551114175505,
+      "p95_kl_std": 0.01745408629212896,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.058263305322128846,
+      "proxy_hacking_rate_std": 0.058831532068683814,
+      "quality_retention_vs_sync": 0.9578893626416085,
+      "rollouts_per_tick": 0.3341750841750842,
+      "rollouts_per_tick_std": 0.02593084478240634,
+      "seeds": 3,
+      "verified_pass_rate": 0.6751789604730781,
+      "verified_pass_rate_seed_values": [
+        0.7428571428571429,
+        0.6944444444444444,
+        0.5882352941176471
+      ],
+      "verified_pass_rate_std": 0.0790907591403263,
+      "verified_rollouts_per_tick": 0.22615039281705948,
+      "verified_rollouts_per_tick_std": 0.035962895555582755,
+      "verified_throughput_multiplier_vs_sync": 1.054432540835746
+    },
+    "stale_filter": {
+      "accept_rate": 0.7808278867102397,
+      "accept_rate_std": 0.01784365597337109,
+      "compute_seconds_per_solved_task": 9.00923076923077,
+      "compute_seconds_per_solved_task_std": 1.5629194348280766,
+      "mean_importance_weight": 0.9748790734050131,
+      "mean_importance_weight_std": 0.008015900795834625,
+      "mean_kl": 0.04460186836785104,
+      "mean_kl_std": 0.0027263982089036905,
+      "mean_lag": 0.20991285403050108,
+      "mean_lag_std": 0.022155641639605338,
+      "p95_kl": 0.08791479954986299,
+      "p95_kl_std": 0.01730676218210001,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.058263305322128846,
+      "proxy_hacking_rate_std": 0.058831532068683814,
+      "quality_retention_vs_sync": 0.9578893626416085,
+      "rollouts_per_tick": 0.3341750841750842,
+      "rollouts_per_tick_std": 0.02593084478240634,
+      "seeds": 3,
+      "verified_pass_rate": 0.6751789604730781,
+      "verified_pass_rate_seed_values": [
+        0.7428571428571429,
+        0.6944444444444444,
+        0.5882352941176471
+      ],
+      "verified_pass_rate_std": 0.0790907591403263,
+      "verified_rollouts_per_tick": 0.22615039281705948,
+      "verified_rollouts_per_tick_std": 0.035962895555582755,
+      "verified_throughput_multiplier_vs_sync": 1.054432540835746
+    },
+    "sync": {
+      "accept_rate": 0.9444444444444445,
+      "accept_rate_std": 0.012028130608117225,
+      "compute_seconds_per_solved_task": 9.370370370370372,
+      "compute_seconds_per_solved_task_std": 0.7817671149092117,
+      "mean_importance_weight": 1.0,
+      "mean_importance_weight_std": 0.0,
+      "mean_kl": 0.04119244453637858,
+      "mean_kl_std": 0.004646624746028506,
+      "mean_lag": 0.0,
+      "mean_lag_std": 0.0,
+      "p95_kl": 0.1154352235113959,
+      "p95_kl_std": 0.010366268409130573,
+      "p95_lag": 0.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.0625,
+      "proxy_hacking_rate_std": 0.036084391824351615,
+      "quality_retention_vs_sync": 1.0,
+      "rollouts_per_tick": 0.30432949198260323,
+      "rollouts_per_tick_std": 0.01964194335764921,
+      "seeds": 3,
+      "verified_pass_rate": 0.704861111111111,
+      "verified_pass_rate_seed_values": [
+        0.65625,
+        0.7291666666666666,
+        0.7291666666666666
+      ],
+      "verified_pass_rate_std": 0.04209845712841019,
+      "verified_rollouts_per_tick": 0.2144759233604571,
+      "verified_rollouts_per_tick_std": 0.018654221384173646,
+      "verified_throughput_multiplier_vs_sync": 1.0
+    }
+  },
+  "policy_backend": "lora",
+  "run_config": {
+    "batch_size": 4,
+    "checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/sync/seed-00",
+    "checkpoint_interval": 10,
+    "eval_interval": 10,
+    "failure_rate": 0.04,
+    "kl_decay": 0.4,
+    "lag_decay": 0.12,
+    "learning_rate": 0.12,
+    "lora_alpha": 16.0,
+    "lora_rank": 8,
+    "max_delay": 8,
+    "max_importance_weight": 2.0,
+    "max_kl": 0.2,
+    "max_lag": 0,
+    "mode": "sync",
+    "model_dim": 128,
+    "model_heads": 4,
+    "model_layers": 2,
+    "model_warmup_epochs": 1,
+    "policy_backend": "lora",
+    "seed": 0,
+    "task_domain": "code",
+    "tasks": 100,
+    "temperature": 0.9,
+    "ticks": 96,
+    "verifier_noise": 0.0,
+    "vertex_account": "ritwij.aryan.parmar@gmail.com",
+    "vertex_budget_usd": 180.0,
+    "vertex_cost_per_request_estimate": 0.01,
+    "vertex_frozen": false,
+    "vertex_location": "us-central1",
+    "vertex_max_requests": 120,
+    "vertex_model": "gemini-2.5-flash-lite",
+    "vertex_project": "gen-lang-client-0576163520",
+    "workers": 2
+  },
+  "runs": [
+    {
+      "mode": "sync",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/sync/seed-00",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.9325789881782148,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 4.254072458
+          },
+          {
+            "loss": 0.00020902580581605434,
+            "mean_entropy": 0.923690131778984,
+            "oracle_accuracy": 0.9,
+            "update": 10.0,
+            "wall_seconds": 5.284801792
+          },
+          {
+            "loss": 0.00022198824444785714,
+            "mean_entropy": 0.9005763960085601,
+            "oracle_accuracy": 0.9,
+            "update": 20.0,
+            "wall_seconds": 6.151750874999999
+          },
+          {
+            "loss": 0.0002643316111061722,
+            "mean_entropy": 0.83216585384931,
+            "oracle_accuracy": 0.9,
+            "update": 30.0,
+            "wall_seconds": 7.034760625
+          },
+          {
+            "loss": 0.0003456108970567584,
+            "mean_entropy": 0.7222324922241318,
+            "oracle_accuracy": 0.9,
+            "update": 40.0,
+            "wall_seconds": 8.006849792
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 48
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.9375,
+        "accepted": 90,
+        "compute_seconds_per_solved_task": 9.968253968253968,
+        "logical_ticks": 314,
+        "mean_importance_weight": 1.0,
+        "mean_kl": 0.04552864884597475,
+        "mean_lag": 0.0,
+        "p95_kl": 0.12722221790572794,
+        "p95_lag": 0.0,
+        "proxy_hacking_rate": 0.10416666666666667,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9375,
+            "count": 96,
+            "verified_rate": 0.65625
+          }
+        },
+        "rollouts_per_tick": 0.3057324840764331,
+        "stale_rejected": 0,
+        "trajectories": 96,
+        "verified": 63,
+        "verified_pass_rate": 0.65625,
+        "verified_pass_rate_ci95": [
+          0.5568784424044507,
+          0.7435975115065444
+        ],
+        "verified_rollouts_per_tick": 0.20063694267515925,
+        "worker_failures": 6
+      },
+      "timing": {
+        "sample_seconds": 0.32594603899999974,
+        "update_seconds": 3.389134581000004,
+        "verifier_seconds": 0.013103241999993465,
+        "wall_clock_seconds": 8.308434833
+      }
+    },
+    {
+      "mode": "sync",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/sync/seed-01",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.7173261750569516,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 3.476053125
+          },
+          {
+            "loss": 0.0002506677701603621,
+            "mean_entropy": 0.7014647031496107,
+            "oracle_accuracy": 0.9,
+            "update": 10.0,
+            "wall_seconds": 4.355418167
+          },
+          {
+            "loss": 0.0002599993604235351,
+            "mean_entropy": 0.684936313147408,
+            "oracle_accuracy": 0.9,
+            "update": 20.0,
+            "wall_seconds": 5.201288958999999
+          },
+          {
+            "loss": 0.00027905733441002667,
+            "mean_entropy": 0.6447430843010197,
+            "oracle_accuracy": 0.9,
+            "update": 30.0,
+            "wall_seconds": 6.015984667
+          },
+          {
+            "loss": 0.0002983337617479265,
+            "mean_entropy": 0.6053318129877527,
+            "oracle_accuracy": 0.9,
+            "update": 40.0,
+            "wall_seconds": 6.8312997499999994
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 48
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 0.9583333333333334,
+        "accepted": 92,
+        "compute_seconds_per_solved_task": 9.657142857142857,
+        "logical_ticks": 338,
+        "mean_importance_weight": 1.0,
+        "mean_kl": 0.04176096816335709,
+        "mean_lag": 0.0,
+        "p95_kl": 0.11134716063624968,
+        "p95_lag": 0.0,
+        "proxy_hacking_rate": 0.041666666666666664,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9583333333333334,
+            "count": 96,
+            "verified_rate": 0.7291666666666666
+          }
+        },
+        "rollouts_per_tick": 0.28402366863905326,
+        "stale_rejected": 0,
+        "trajectories": 96,
+        "verified": 70,
+        "verified_pass_rate": 0.7291666666666666,
+        "verified_pass_rate_ci95": [
+          0.632734651676977,
+          0.807963414059149
+        ],
+        "verified_rollouts_per_tick": 0.20710059171597633,
+        "worker_failures": 4
+      },
+      "timing": {
+        "sample_seconds": 0.29806083800000316,
+        "update_seconds": 2.982923046999991,
+        "verifier_seconds": 0.014216501000005266,
+        "wall_clock_seconds": 7.079180625000001
+      }
+    },
+    {
+      "mode": "sync",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/sync/seed-02",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.721643461918056,
+            "oracle_accuracy": 0.88,
+            "update": 0.0,
+            "wall_seconds": 3.5911125839999993
+          },
+          {
+            "loss": 0.00023098659585230052,
+            "mean_entropy": 0.7059688660471748,
+            "oracle_accuracy": 0.88,
+            "update": 10.0,
+            "wall_seconds": 4.478302125000001
+          },
+          {
+            "loss": 0.00023033330217003822,
+            "mean_entropy": 0.6901536283314462,
+            "oracle_accuracy": 0.88,
+            "update": 20.0,
+            "wall_seconds": 5.394601750000001
+          },
+          {
+            "loss": 0.001122240093536675,
+            "mean_entropy": 0.6209414488157922,
+            "oracle_accuracy": 0.88,
+            "update": 30.0,
+            "wall_seconds": 6.254681417000002
+          },
+          {
+            "loss": 0.00028495900915004313,
+            "mean_entropy": 0.5728836594570871,
+            "oracle_accuracy": 0.88,
+            "update": 40.0,
+            "wall_seconds": 7.1435998340000015
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 48
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 0.9375,
+        "accepted": 90,
+        "compute_seconds_per_solved_task": 8.485714285714286,
+        "logical_ticks": 297,
+        "mean_importance_weight": 1.0,
+        "mean_kl": 0.03628771659980393,
+        "mean_lag": 0.0,
+        "p95_kl": 0.10773629199221005,
+        "p95_lag": 0.0,
+        "proxy_hacking_rate": 0.041666666666666664,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9375,
+            "count": 96,
+            "verified_rate": 0.7291666666666666
+          }
+        },
+        "rollouts_per_tick": 0.32323232323232326,
+        "stale_rejected": 0,
+        "trajectories": 96,
+        "verified": 70,
+        "verified_pass_rate": 0.7291666666666666,
+        "verified_pass_rate_ci95": [
+          0.632734651676977,
+          0.807963414059149
+        ],
+        "verified_rollouts_per_tick": 0.2356902356902357,
+        "worker_failures": 6
+      },
+      "timing": {
+        "sample_seconds": 0.30285179299999854,
+        "update_seconds": 3.1590386699999904,
+        "verifier_seconds": 0.013510921000008835,
+        "wall_clock_seconds": 7.377734124999998
+      }
+    },
+    {
+      "mode": "naive_async",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/naive_async/seed-00",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.9325789881782148,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 3.5241739999999986
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 35,
+        "compute_seconds_per_solved_task": 8.307692307692308,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9811294624592569,
+        "mean_kl": 0.04327559485231889,
+        "mean_lag": 0.2,
+        "p95_kl": 0.07519185422177162,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.05714285714285714,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 28,
+            "verified_rate": 0.7142857142857143
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.32407407407407407,
+        "stale_rejected": 0,
+        "trajectories": 35,
+        "verified": 26,
+        "verified_pass_rate": 0.7428571428571429,
+        "verified_pass_rate_ci95": [
+          0.5793037572935127,
+          0.8583713127344985
+        ],
+        "verified_rollouts_per_tick": 0.24074074074074073,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.1762768739999956,
+        "update_seconds": 0.22526716500000532,
+        "verifier_seconds": 0.005832578999982019,
+        "wall_clock_seconds": 4.089074083
+      }
+    },
+    {
+      "mode": "naive_async",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/naive_async/seed-01",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.7173261750569516,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 3.649282499999998
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 36,
+        "compute_seconds_per_solved_task": 7.92,
+        "logical_ticks": 99,
+        "mean_importance_weight": 0.9990677277350218,
+        "mean_kl": 0.04288427436026939,
+        "mean_lag": 0.19444444444444445,
+        "p95_kl": 0.07952643563031891,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 29,
+            "verified_rate": 0.6551724137931034
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.36363636363636365,
+        "stale_rejected": 0,
+        "trajectories": 36,
+        "verified": 25,
+        "verified_pass_rate": 0.6944444444444444,
+        "verified_pass_rate_ci95": [
+          0.5314342132091627,
+          0.8199572971719464
+        ],
+        "verified_rollouts_per_tick": 0.25252525252525254,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.16426628999999338,
+        "update_seconds": 0.23817124899999698,
+        "verifier_seconds": 0.006162498000009009,
+        "wall_clock_seconds": 4.229502125
+      }
+    },
+    {
+      "mode": "naive_async",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/naive_async/seed-02",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.721643461918056,
+            "oracle_accuracy": 0.88,
+            "update": 0.0,
+            "wall_seconds": 3.483544375000001
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 1.0,
+        "accepted": 34,
+        "compute_seconds_per_solved_task": 10.8,
+        "logical_ticks": 108,
+        "mean_importance_weight": 1.0031635147019533,
+        "mean_kl": 0.04815306828442035,
+        "mean_lag": 0.23529411764705882,
+        "p95_kl": 0.10773629199221005,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.11764705882352941,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 26,
+            "verified_rate": 0.5769230769230769
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 8,
+            "verified_rate": 0.625
+          }
+        },
+        "rollouts_per_tick": 0.3148148148148148,
+        "stale_rejected": 0,
+        "trajectories": 34,
+        "verified": 20,
+        "verified_pass_rate": 0.5882352941176471,
+        "verified_pass_rate_ci95": [
+          0.42221304146519273,
+          0.7363426221431113
+        ],
+        "verified_rollouts_per_tick": 0.18518518518518517,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.15330416899997346,
+        "update_seconds": 0.21219245900000772,
+        "verifier_seconds": 0.005519792000001189,
+        "wall_clock_seconds": 4.028611417000004
+      }
+    },
+    {
+      "mode": "stale_filter",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/stale_filter/seed-00",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.9325789881782148,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 3.643343833000003
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.8,
+        "accepted": 28,
+        "compute_seconds_per_solved_task": 8.307692307692308,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9666322240616865,
+        "mean_kl": 0.0432422242766319,
+        "mean_lag": 0.2,
+        "p95_kl": 0.07580056853267864,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.05714285714285714,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 28,
+            "verified_rate": 0.7142857142857143
+          },
+          "1": {
+            "accept_rate": 0.0,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.32407407407407407,
+        "stale_rejected": 7,
+        "trajectories": 35,
+        "verified": 26,
+        "verified_pass_rate": 0.7428571428571429,
+        "verified_pass_rate_ci95": [
+          0.5793037572935127,
+          0.8583713127344985
+        ],
+        "verified_rollouts_per_tick": 0.24074074074074073,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.18635729499999343,
+        "update_seconds": 0.20477270900000377,
+        "verifier_seconds": 0.0062872880000028886,
+        "wall_clock_seconds": 4.210373375000003
+      }
+    },
+    {
+      "mode": "stale_filter",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/stale_filter/seed-01",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.7173261750569516,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 3.493248874999999
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 0.7777777777777778,
+        "accepted": 28,
+        "compute_seconds_per_solved_task": 7.92,
+        "logical_ticks": 99,
+        "mean_importance_weight": 0.9753628864902543,
+        "mean_kl": 0.042822671675747756,
+        "mean_lag": 0.19444444444444445,
+        "p95_kl": 0.08020753812470029,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9655172413793104,
+            "count": 29,
+            "verified_rate": 0.6551724137931034
+          },
+          "1": {
+            "accept_rate": 0.0,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.36363636363636365,
+        "stale_rejected": 8,
+        "trajectories": 36,
+        "verified": 25,
+        "verified_pass_rate": 0.6944444444444444,
+        "verified_pass_rate_ci95": [
+          0.5314342132091627,
+          0.8199572971719464
+        ],
+        "verified_rollouts_per_tick": 0.25252525252525254,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.16405612700000916,
+        "update_seconds": 0.17026895900000483,
+        "verifier_seconds": 0.00582041600001304,
+        "wall_clock_seconds": 4.000574792000002
+      }
+    },
+    {
+      "mode": "stale_filter",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/stale_filter/seed-02",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.721643461918056,
+            "oracle_accuracy": 0.88,
+            "update": 0.0,
+            "wall_seconds": 3.5196437920000037
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 0.7647058823529411,
+        "accepted": 26,
+        "compute_seconds_per_solved_task": 10.8,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9826421096630984,
+        "mean_kl": 0.04774070915117346,
+        "mean_lag": 0.23529411764705882,
+        "p95_kl": 0.10773629199221005,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.11764705882352941,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 1.0,
+            "count": 26,
+            "verified_rate": 0.5769230769230769
+          },
+          "1": {
+            "accept_rate": 0.0,
+            "count": 8,
+            "verified_rate": 0.625
+          }
+        },
+        "rollouts_per_tick": 0.3148148148148148,
+        "stale_rejected": 8,
+        "trajectories": 34,
+        "verified": 20,
+        "verified_pass_rate": 0.5882352941176471,
+        "verified_pass_rate_ci95": [
+          0.42221304146519273,
+          0.7363426221431113
+        ],
+        "verified_rollouts_per_tick": 0.18518518518518517,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.15607337600000193,
+        "update_seconds": 0.1712581660000012,
+        "verifier_seconds": 0.005258789999970759,
+        "wall_clock_seconds": 4.028272625
+      }
+    },
+    {
+      "mode": "random_filter",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/random_filter/seed-00",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.9325789881782148,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 3.7236627500000026
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.8285714285714286,
+        "accepted": 29,
+        "compute_seconds_per_solved_task": 8.307692307692308,
+        "logical_ticks": 108,
+        "mean_importance_weight": 0.9789185743402486,
+        "mean_kl": 0.043259857728217575,
+        "mean_lag": 0.2,
+        "p95_kl": 0.07508715854784064,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.05714285714285714,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.8571428571428571,
+            "count": 28,
+            "verified_rate": 0.7142857142857143
+          },
+          "1": {
+            "accept_rate": 0.7142857142857143,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.32407407407407407,
+        "stale_rejected": 0,
+        "trajectories": 35,
+        "verified": 26,
+        "verified_pass_rate": 0.7428571428571429,
+        "verified_pass_rate_ci95": [
+          0.5793037572935127,
+          0.8583713127344985
+        ],
+        "verified_rollouts_per_tick": 0.24074074074074073,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.1640786219999839,
+        "update_seconds": 0.19096629099998808,
+        "verifier_seconds": 0.0058951650000125255,
+        "wall_clock_seconds": 4.234977957999995
+      }
+    },
+    {
+      "mode": "random_filter",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/random_filter/seed-01",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.7173261750569516,
+            "oracle_accuracy": 0.9,
+            "update": 0.0,
+            "wall_seconds": 3.528732208000001
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 1,
+      "summary": {
+        "accept_rate": 0.8055555555555556,
+        "accepted": 29,
+        "compute_seconds_per_solved_task": 7.92,
+        "logical_ticks": 99,
+        "mean_importance_weight": 1.0026884451395894,
+        "mean_kl": 0.04285824790786236,
+        "mean_lag": 0.19444444444444445,
+        "p95_kl": 0.08071308288521449,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.7931034482758621,
+            "count": 29,
+            "verified_rate": 0.6551724137931034
+          },
+          "1": {
+            "accept_rate": 0.8571428571428571,
+            "count": 7,
+            "verified_rate": 0.8571428571428571
+          }
+        },
+        "rollouts_per_tick": 0.36363636363636365,
+        "stale_rejected": 0,
+        "trajectories": 36,
+        "verified": 25,
+        "verified_pass_rate": 0.6944444444444444,
+        "verified_pass_rate_ci95": [
+          0.5314342132091627,
+          0.8199572971719464
+        ],
+        "verified_rollouts_per_tick": 0.25252525252525254,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.16300687500000066,
+        "update_seconds": 0.1899406670000019,
+        "verifier_seconds": 0.005189287999982639,
+        "wall_clock_seconds": 4.065204957999995
+      }
+    },
+    {
+      "mode": "random_filter",
+      "policy_usage": {
+        "lora_alpha": 16.0,
+        "lora_checkpoint_dir": "/Users/ritwij/Documents/ChatGPT/new project/StaleRoll/artifacts/lora_code_training/checkpoints/random_filter/seed-02",
+        "lora_eval_history": [
+          {
+            "loss": 0.0,
+            "mean_entropy": 0.721643461918056,
+            "oracle_accuracy": 0.88,
+            "update": 0.0,
+            "wall_seconds": 3.646609542
+          }
+        ],
+        "lora_rank": 8,
+        "lora_trainable_parameters": 1032,
+        "lora_updates": 9
+      },
+      "seed": 2,
+      "summary": {
+        "accept_rate": 0.6470588235294118,
+        "accepted": 22,
+        "compute_seconds_per_solved_task": 10.8,
+        "logical_ticks": 108,
+        "mean_importance_weight": 1.0165417903988703,
+        "mean_kl": 0.047735353543570024,
+        "mean_lag": 0.23529411764705882,
+        "p95_kl": 0.10773629199221005,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.11764705882352941,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.6538461538461539,
+            "count": 26,
+            "verified_rate": 0.5769230769230769
+          },
+          "1": {
+            "accept_rate": 0.625,
+            "count": 8,
+            "verified_rate": 0.625
+          }
+        },
+        "rollouts_per_tick": 0.3148148148148148,
+        "stale_rejected": 0,
+        "trajectories": 34,
+        "verified": 20,
+        "verified_pass_rate": 0.5882352941176471,
+        "verified_pass_rate_ci95": [
+          0.42221304146519273,
+          0.7363426221431113
+        ],
+        "verified_rollouts_per_tick": 0.18518518518518517,
+        "worker_failures": 0
+      },
+      "timing": {
+        "sample_seconds": 0.2059507899999744,
+        "update_seconds": 0.17327074999999326,
+        "verifier_seconds": 0.005316958000001648,
+        "wall_clock_seconds": 4.222991624999999
+      }
+    }
+  ],
+  "task_domain": "code"
+}

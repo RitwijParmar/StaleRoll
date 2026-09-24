@@ -1,0 +1,266 @@
+{
+  "experiment": "staleroll",
+  "modes": {
+    "naive_async": {
+      "accept_rate": 0.9782608695652174,
+      "accept_rate_std": 0.0,
+      "compute_seconds_per_solved_task": 11.25,
+      "compute_seconds_per_solved_task_std": 0.0,
+      "mean_importance_weight": 0.9690575795759001,
+      "mean_importance_weight_std": 0.0,
+      "mean_kl": 0.1711608345703255,
+      "mean_kl_std": 0.0,
+      "mean_lag": 0.13043478260869565,
+      "mean_lag_std": 0.0,
+      "p95_kl": 0.35870300485038203,
+      "p95_kl_std": 0.0,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.0,
+      "proxy_hacking_rate_std": 0.0,
+      "rollouts_per_tick": 0.7666666666666667,
+      "rollouts_per_tick_std": 0.0,
+      "seeds": 1,
+      "verified_pass_rate": 0.34782608695652173,
+      "verified_pass_rate_seed_values": [
+        0.34782608695652173
+      ],
+      "verified_pass_rate_std": 0.0,
+      "verified_rollouts_per_tick": 0.26666666666666666,
+      "verified_rollouts_per_tick_std": 0.0
+    },
+    "random_filter": {
+      "accept_rate": 0.7608695652173914,
+      "accept_rate_std": 0.0,
+      "compute_seconds_per_solved_task": 11.25,
+      "compute_seconds_per_solved_task_std": 0.0,
+      "mean_importance_weight": 0.9527418981232466,
+      "mean_importance_weight_std": 0.0,
+      "mean_kl": 0.1785344490985421,
+      "mean_kl_std": 0.0,
+      "mean_lag": 0.13043478260869565,
+      "mean_lag_std": 0.0,
+      "p95_kl": 0.30635281755327726,
+      "p95_kl_std": 0.0,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.0,
+      "proxy_hacking_rate_std": 0.0,
+      "rollouts_per_tick": 0.7666666666666667,
+      "rollouts_per_tick_std": 0.0,
+      "seeds": 1,
+      "verified_pass_rate": 0.34782608695652173,
+      "verified_pass_rate_seed_values": [
+        0.34782608695652173
+      ],
+      "verified_pass_rate_std": 0.0,
+      "verified_rollouts_per_tick": 0.26666666666666666,
+      "verified_rollouts_per_tick_std": 0.0
+    },
+    "stale_filter": {
+      "accept_rate": 0.9347826086956522,
+      "accept_rate_std": 0.0,
+      "compute_seconds_per_solved_task": 11.25,
+      "compute_seconds_per_solved_task_std": 0.0,
+      "mean_importance_weight": 0.9777643353080152,
+      "mean_importance_weight_std": 0.0,
+      "mean_kl": 0.16010642402261238,
+      "mean_kl_std": 0.0,
+      "mean_lag": 0.13043478260869565,
+      "mean_lag_std": 0.0,
+      "p95_kl": 0.35980500844940133,
+      "p95_kl_std": 0.0,
+      "p95_lag": 1.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.0,
+      "proxy_hacking_rate_std": 0.0,
+      "rollouts_per_tick": 0.7666666666666667,
+      "rollouts_per_tick_std": 0.0,
+      "seeds": 1,
+      "verified_pass_rate": 0.34782608695652173,
+      "verified_pass_rate_seed_values": [
+        0.34782608695652173
+      ],
+      "verified_pass_rate_std": 0.0,
+      "verified_rollouts_per_tick": 0.26666666666666666,
+      "verified_rollouts_per_tick_std": 0.0
+    },
+    "sync": {
+      "accept_rate": 0.9666666666666667,
+      "accept_rate_std": 0.0,
+      "compute_seconds_per_solved_task": 2.2222222222222223,
+      "compute_seconds_per_solved_task_std": 0.0,
+      "mean_importance_weight": 1.0,
+      "mean_importance_weight_std": 0.0,
+      "mean_kl": 0.0207499270232777,
+      "mean_kl_std": 0.0,
+      "mean_lag": 0.0,
+      "mean_lag_std": 0.0,
+      "p95_kl": 0.07115568551533638,
+      "p95_kl_std": 0.0,
+      "p95_lag": 0.0,
+      "p95_lag_std": 0.0,
+      "proxy_hacking_rate": 0.0,
+      "proxy_hacking_rate_std": 0.0,
+      "rollouts_per_tick": 1.5,
+      "rollouts_per_tick_std": 0.0,
+      "seeds": 1,
+      "verified_pass_rate": 0.9,
+      "verified_pass_rate_seed_values": [
+        0.9
+      ],
+      "verified_pass_rate_std": 0.0,
+      "verified_rollouts_per_tick": 1.35,
+      "verified_rollouts_per_tick_std": 0.0
+    }
+  },
+  "runs": [
+    {
+      "mode": "sync",
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.9666666666666667,
+        "accepted": 87,
+        "compute_seconds_per_solved_task": 2.2222222222222223,
+        "mean_importance_weight": 1.0,
+        "mean_kl": 0.0207499270232777,
+        "mean_lag": 0.0,
+        "p95_kl": 0.07115568551533638,
+        "p95_lag": 0.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.9666666666666667,
+            "count": 90,
+            "verified_rate": 0.9
+          }
+        },
+        "rollouts_per_tick": 1.5,
+        "stale_rejected": 0,
+        "trajectories": 90,
+        "verified": 81,
+        "verified_pass_rate": 0.9,
+        "verified_pass_rate_ci95": [
+          0.8207564910060137,
+          0.9464938542566417
+        ],
+        "verified_rollouts_per_tick": 1.35,
+        "worker_failures": 3
+      }
+    },
+    {
+      "mode": "naive_async",
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.9782608695652174,
+        "accepted": 45,
+        "compute_seconds_per_solved_task": 11.25,
+        "mean_importance_weight": 0.9690575795759001,
+        "mean_kl": 0.1711608345703255,
+        "mean_lag": 0.13043478260869565,
+        "p95_kl": 0.35870300485038203,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.975,
+            "count": 40,
+            "verified_rate": 0.375
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 6,
+            "verified_rate": 0.16666666666666666
+          }
+        },
+        "rollouts_per_tick": 0.7666666666666667,
+        "stale_rejected": 0,
+        "trajectories": 46,
+        "verified": 16,
+        "verified_pass_rate": 0.34782608695652173,
+        "verified_pass_rate_ci95": [
+          0.22680806269918055,
+          0.49230207822727434
+        ],
+        "verified_rollouts_per_tick": 0.26666666666666666,
+        "worker_failures": 1
+      }
+    },
+    {
+      "mode": "stale_filter",
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.9347826086956522,
+        "accepted": 43,
+        "compute_seconds_per_solved_task": 11.25,
+        "mean_importance_weight": 0.9777643353080152,
+        "mean_kl": 0.16010642402261238,
+        "mean_lag": 0.13043478260869565,
+        "p95_kl": 0.35980500844940133,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.975,
+            "count": 40,
+            "verified_rate": 0.375
+          },
+          "1": {
+            "accept_rate": 0.6666666666666666,
+            "count": 6,
+            "verified_rate": 0.16666666666666666
+          }
+        },
+        "rollouts_per_tick": 0.7666666666666667,
+        "stale_rejected": 2,
+        "trajectories": 46,
+        "verified": 16,
+        "verified_pass_rate": 0.34782608695652173,
+        "verified_pass_rate_ci95": [
+          0.22680806269918055,
+          0.49230207822727434
+        ],
+        "verified_rollouts_per_tick": 0.26666666666666666,
+        "worker_failures": 1
+      }
+    },
+    {
+      "mode": "random_filter",
+      "seed": 0,
+      "summary": {
+        "accept_rate": 0.7608695652173914,
+        "accepted": 35,
+        "compute_seconds_per_solved_task": 11.25,
+        "mean_importance_weight": 0.9527418981232466,
+        "mean_kl": 0.1785344490985421,
+        "mean_lag": 0.13043478260869565,
+        "p95_kl": 0.30635281755327726,
+        "p95_lag": 1.0,
+        "proxy_hacking_rate": 0.0,
+        "quality_by_lag": {
+          "0": {
+            "accept_rate": 0.725,
+            "count": 40,
+            "verified_rate": 0.375
+          },
+          "1": {
+            "accept_rate": 1.0,
+            "count": 6,
+            "verified_rate": 0.16666666666666666
+          }
+        },
+        "rollouts_per_tick": 0.7666666666666667,
+        "stale_rejected": 0,
+        "trajectories": 46,
+        "verified": 16,
+        "verified_pass_rate": 0.34782608695652173,
+        "verified_pass_rate_ci95": [
+          0.22680806269918055,
+          0.49230207822727434
+        ],
+        "verified_rollouts_per_tick": 0.26666666666666666,
+        "worker_failures": 1
+      }
+    }
+  ]
+}
