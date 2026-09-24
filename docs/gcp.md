@@ -15,10 +15,13 @@ gcloud billing accounts list
 The usable project is:
 
 - project: `gen-lang-client-0576163520`
-- billing account: `01B8F9-4880C4-320ABC` (open)
+- billing account: previously linked to `01B8F9-4880C4-320ABC`; now unlinked from this project
 - location: `us-central1`
 - model: `gemini-2.5-flash-lite`
-- gcloud account: `ritwij.aryan.parmar@gmail.com`
+
+No personal gcloud account is stored in the repository. The project is
+currently unbilled, Vertex AI is disabled, and the previously used local
+credentials were revoked.
 
 The project has a **$180 USD** budget with alerts at 50%, 80%, 90%, and 100%.
 This is an alert budget, not an automatic shutdown mechanism. The Vertex

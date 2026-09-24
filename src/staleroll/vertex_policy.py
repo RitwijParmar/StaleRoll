@@ -55,10 +55,11 @@ class VertexGeminiPolicy:
     def _access_token(self) -> str:
         if self._cached_access_token:
             return self._cached_access_token
-        self._cached_access_token = subprocess.check_output(
-            ["gcloud", "auth", "print-access-token", f"--account={self.account}"],
-            text=True,
-        ).strip()
+        if not self.account:
+            raise RuntimeError("Vertex runs require an explicit --vertex-account; no cloud account is selected")
+        command = ["gcloud", "auth", "print-access-token"]
+        command.append(f"--account={self.account}")
+        self._cached_access_token = subprocess.check_output(command, text=True).strip()
         return self._cached_access_token
 
     def _base_distribution(self, task: Task) -> List[float]:

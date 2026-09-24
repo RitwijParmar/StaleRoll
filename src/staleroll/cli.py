@@ -127,7 +127,7 @@ def main() -> int:
     run.add_argument("--vertex-project", default="gen-lang-client-0576163520")
     run.add_argument("--vertex-location", default="us-central1")
     run.add_argument("--vertex-model", default="gemini-2.5-flash-lite")
-    run.add_argument("--vertex-account", default="ritwij.aryan.parmar@gmail.com")
+    run.add_argument("--vertex-account", default="")
     run.add_argument("--vertex-max-requests", type=int, default=120)
     run.add_argument("--vertex-budget-usd", type=float, default=180.0)
     run.add_argument("--vertex-cost-per-request", type=float, default=0.01)

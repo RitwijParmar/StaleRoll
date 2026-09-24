@@ -121,6 +121,8 @@ and calls only the configured Vertex endpoint. It applies a local request-count
 and estimated-cost stop before each uncached task request. Google Cloud Billing
 also has a project budget with alerts at 50%, 80%, 90%, and 100%; budgets are
 alerts rather than a guaranteed hard cap, so the local stop remains enabled.
+The repository does not store a personal gcloud account; `--vertex-account`
+must be supplied explicitly for any future cloud run.
 
 ## Project map
 

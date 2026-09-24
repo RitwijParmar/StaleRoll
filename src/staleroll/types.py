@@ -88,7 +88,10 @@ class RunConfig:
     vertex_project: str = "gen-lang-client-0576163520"
     vertex_location: str = "us-central1"
     vertex_model: str = "gemini-2.5-flash-lite"
-    vertex_account: str = "ritwij.aryan.parmar@gmail.com"
+    # Leave account selection empty so a cloud run cannot silently bind to a
+    # personal account. Pass --vertex-account explicitly only after choosing a
+    # different, authorized account.
+    vertex_account: str = ""
     vertex_max_requests: int = 120
     vertex_budget_usd: float = 180.0
     vertex_cost_per_request_estimate: float = 0.01
