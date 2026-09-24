@@ -230,8 +230,8 @@ def scene_results(step: int) -> Image.Image:
         draw.rounded_rectangle((48, y - 16, 1380, y + 58), radius=12, fill=fill)
         for (x, _), value in zip(columns, row):
             draw_text(draw, (x, y + 8), value, 24, GREEN if i == 2 else INK, i == 2)
-    marker(draw, 338, 420 if step < 3 else 520, 850, "COMPARE")
-    pen(draw, 1250, 428 if step < 3 else 528)
+    marker(draw, 338, 220 if step < 3 else 420, 850, "COMPARE")
+    pen(draw, 1250, 228 if step < 3 else 428)
     draw_text(draw, (52, 682), "LoRA: 0.5916 verified/tick · Gemini: 0.5888 verified/tick in stale_filter.", 18, MUTED)
     return image
 
