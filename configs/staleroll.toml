@@ -1,0 +1,20 @@
+# Reference configuration for a future real async RL integration.
+# The CPU simulator does not parse this file.
+[experiment]
+name = "staleroll"
+seeds = [0, 1, 2]
+max_lag = 8
+max_kl = 1.25
+lag_decay = 0.12
+kl_decay = 0.40
+max_importance_weight = 2.0
+
+[rollouts]
+workers = 3
+max_delay = 6
+verifier_noise = 0.0
+
+[training]
+algorithm = "grpo"
+adapter = "lora"
+gradient_steps_per_update = 1

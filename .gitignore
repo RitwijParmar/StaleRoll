@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+artifacts/latest/
+demo/.build/
+
+# Large generated run logs and intermediate checkpoints stay local; the
+# checked-in reports and comparison summaries are the reviewable artifacts.
+artifacts/**/runs/
+artifacts/**/checkpoints/
+artifacts/**/*.pt

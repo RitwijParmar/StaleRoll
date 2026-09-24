@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "staleroll"
+version = "0.1.0"
+description = "A CPU-reproducible simulator for risk-aware asynchronous RL with verifiable rewards"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+model = ["torch>=2.0"]
+cloud = ["requests>=2.31"]
+
+[project.scripts]
+staleroll = "staleroll.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
