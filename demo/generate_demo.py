@@ -1,235 +1,302 @@
-"""Build the short narrated StaleRoll project demo.
+"""Build a narrated, run-through demo for StaleRoll.
 
-The output is a self-contained MP4 with a conversational macOS voiceover.
-The visuals use a pen-and-marker metaphor for proposing and checking repairs,
-then switch to the measured 100-task experiment results.
+This is intentionally a project walkthrough rather than a title-card reel:
+the video shows the command that is run, real smoke-run numbers, the actual
+LoRA/checkpoint code path, and the checked-in 100-task comparison. A blue pen
+cursor points at the line being discussed and a yellow marker highlight moves
+over the important evidence.
 """
 
 from __future__ import annotations
 
-import subprocess
+import asyncio
+import json
 from pathlib import Path
 
+from moviepy import AudioFileClip, ImageSequenceClip, concatenate_audioclips, concatenate_videoclips
 from PIL import Image, ImageDraw, ImageFont
-from moviepy import AudioFileClip, ImageSequenceClip
 
 
 ROOT = Path(__file__).resolve().parent
-BUILD = ROOT / ".build"
+PROJECT = ROOT.parent
+BUILD = ROOT / ".build-v2"
 OUTPUT = ROOT / "staleroll_demo.mp4"
-WIDTH, HEIGHT = 1280, 720
+WIDTH, HEIGHT = 1440, 810
 FPS = 24
 
-
-def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
-    path = "/System/Library/Fonts/SFNS.ttf" if not bold else "/System/Library/Fonts/SFNS-Bold.ttf"
-    try:
-        return ImageFont.truetype(path, size)
-    except OSError:
-        return ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", size)
-
-
-def text(draw: ImageDraw.ImageDraw, xy: tuple[int, int], value: str, size: int, fill: str = "#17202A", bold: bool = False) -> None:
-    draw.text(xy, value, font=font(size, bold), fill=fill)
+BLUE = "#5CA8E6"
+INK = "#E9EEF2"
+MUTED = "#9AA8B3"
+GREEN = "#72D19B"
+YELLOW = "#F5C451"
+RED = "#F27670"
+PANEL = "#17212B"
+TERMINAL = "#10161C"
 
 
-def wrapped(draw: ImageDraw.ImageDraw, xy: tuple[int, int], value: str, width: int, size: int, fill: str = "#17202A") -> int:
-    words = value.split()
-    lines: list[str] = []
-    current = ""
-    probe = font(size)
-    for word in words:
-        candidate = f"{current} {word}".strip()
-        if draw.textbbox((0, 0), candidate, font=probe)[2] <= width:
-            current = candidate
-        else:
-            lines.append(current)
-            current = word
-    if current:
-        lines.append(current)
-    for index, line in enumerate(lines):
-        text(draw, (xy[0], xy[1] + index * (size + 10)), line, size, fill)
-    return len(lines) * (size + 10)
+NARRATION = [
+    "Let me show you what this repository actually runs. I’m going to start at the project root, launch a small LoRA smoke run, and then connect that run to the full benchmark in the report.",
+    "This is the command. The short demo uses twenty code-repair tasks so it finishes quickly. The checked-in experiment uses one hundred tasks, three seeds, and the same controller arms.",
+    "Each task gives the policy five complete Python repairs. The visible tests are only a quick signal. The hidden tests are the marker: they decide whether a repair really works, or whether it only learned to look good on the proxy.",
+    "Here is the trainable part. The Transformer representation stays frozen. The low-rank head is updated from verified reward. Every five updates the policy is evaluated, and every ten updates a checkpoint is written so the training path can be inspected later.",
+    "The workers finish at different times. StaleRoll measures the age of each sample and the KL shift from the old policy to the current one. The marker highlights a sample that stays inside both limits; unsafe stale work is left out of the update.",
+    "Now the real comparison. On one hundred tasks, the stale-filter arm reached seventy-five point five percent verified pass rate with the LoRA adapter, versus seventy-six point two percent for frozen Gemini. Throughput was almost identical: point five nine two versus point five eight nine verified rollouts per tick.",
+    "That is the honest result. Gemini is a little stronger on asynchronous quality, while the adapter is trainable locally and has comparable throughput. The repository includes the command, the reports, the checkpoints, and this walkthrough. You can run it yourself.",
+]
 
 
-def base(title: str, eyebrow: str, accent: str = "#2364AA") -> tuple[Image.Image, ImageDraw.ImageDraw]:
-    image = Image.new("RGB", (WIDTH, HEIGHT), "#F7F5EF")
+def fnt(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
+    candidates = [
+        "/System/Library/Fonts/SFNS-Bold.ttf" if bold else "/System/Library/Fonts/SFNS.ttf",
+        "/System/Library/Fonts/Helvetica.ttc",
+    ]
+    for path in candidates:
+        try:
+            return ImageFont.truetype(path, size)
+        except OSError:
+            continue
+    return ImageFont.load_default()
+
+
+def draw_text(draw: ImageDraw.ImageDraw, xy: tuple[int, int], value: str, size: int, fill: str = INK, bold: bool = False) -> None:
+    draw.text(xy, value, font=fnt(size, bold), fill=fill)
+
+
+def terminal_frame(title: str, subtitle: str = "") -> tuple[Image.Image, ImageDraw.ImageDraw]:
+    image = Image.new("RGB", (WIDTH, HEIGHT), TERMINAL)
     draw = ImageDraw.Draw(image)
-    draw.rectangle((0, 0, WIDTH, 16), fill=accent)
-    text(draw, (72, 60), eyebrow.upper(), 20, accent, True)
-    text(draw, (72, 96), title, 44, "#17202A", True)
-    draw.line((72, 170, WIDTH - 72, 170), fill="#D7D3C8", width=2)
+    draw.rectangle((0, 0, WIDTH, 58), fill="#202C38")
+    for x, color in ((34, RED), (60, YELLOW), (86, GREEN)):
+        draw.ellipse((x - 8, 21, x + 8, 37), fill=color)
+    draw_text(draw, (122, 16), title, 22, INK, True)
+    if subtitle:
+        draw_text(draw, (1040, 18), subtitle, 17, MUTED)
     return image, draw
 
 
-def pen_and_marker(draw: ImageDraw.ImageDraw, x: int, y: int, scale: float = 1.0) -> None:
-    # Pen: a blue proposal stroke.
-    draw.rounded_rectangle((x, y, x + int(230 * scale), y + int(38 * scale)), radius=int(18 * scale), fill="#2364AA")
-    draw.polygon([(x + int(230 * scale), y), (x + int(275 * scale), y + int(19 * scale)), (x + int(230 * scale), y + int(38 * scale))], fill="#17202A")
-    draw.rectangle((x + int(34 * scale), y, x + int(52 * scale), y + int(38 * scale)), fill="#BFD8F1")
-    # Marker: a warm verification stroke.
-    mx = x + int(20 * scale)
-    my = y + int(90 * scale)
-    draw.rounded_rectangle((mx, my, mx + int(250 * scale), my + int(50 * scale)), radius=int(12 * scale), fill="#E58B3A")
-    draw.rectangle((mx + int(190 * scale), my, mx + int(250 * scale), my + int(50 * scale)), fill="#F4C16E")
-    draw.polygon([(mx + int(250 * scale), my), (mx + int(285 * scale), my + int(25 * scale)), (mx + int(250 * scale), my + int(50 * scale))], fill="#9D4E1D")
+def code_line(draw: ImageDraw.ImageDraw, y: int, number: int, value: str, highlight: bool = False, color: str = INK) -> None:
+    if highlight:
+        draw.rounded_rectangle((86, y - 5, 1360, y + 38), radius=8, fill="#5C481A")
+    draw_text(draw, (42, y), f"{number:>3}", 18, "#647685")
+    draw_text(draw, (92, y), value, 21, color)
 
 
-def scene_title() -> Image.Image:
-    image, draw = base("StaleRoll", "A narrated project demo", "#2364AA")
-    text(draw, (74, 218), "Async RL with verifiable code repair", 30, "#46515C")
-    wrapped(draw, (74, 278), "A small, measurable system for learning when a rollout is still safe to use after the policy has moved on.", 650, 24, "#46515C")
-    pen_and_marker(draw, 840, 248, 1.15)
-    text(draw, (840, 480), "pen = propose", 22, "#2364AA", True)
-    text(draw, (840, 520), "marker = verify", 22, "#B15E1D", True)
-    text(draw, (74, 640), "100 execution-verified repair tasks · local LoRA · frozen Gemini reference", 18, "#68737D")
+def marker(draw: ImageDraw.ImageDraw, x: int, y: int, width: int, label: str = "MARKER") -> None:
+    # A translucent yellow marker stroke sits over the line being discussed.
+    draw.rounded_rectangle((x, y, x + width, y + 42), radius=9, fill="#6E581D", outline=YELLOW, width=2)
+    draw_text(draw, (x + width + 12, y + 9), label, 15, YELLOW, True)
+
+
+def pen(draw: ImageDraw.ImageDraw, x: int, y: int, label: str = "PEN") -> None:
+    # A small blue pen points to the line being discussed.
+    draw.rounded_rectangle((x, y, x + 94, y + 20), radius=9, fill=BLUE)
+    draw.rectangle((x + 18, y, x + 28, y + 20), fill="#C7E5FF")
+    draw.polygon([(x + 94, y), (x + 122, y + 10), (x + 94, y + 20)], fill=INK)
+    draw_text(draw, (x + 132, y - 2), label, 14, BLUE, True)
+
+
+def read_demo_metrics() -> dict:
+    path = PROJECT / "artifacts" / "demo_run" / "comparison.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return {mode: data["modes"][mode] for mode in ("sync", "stale_filter")}
+    return {"sync": {"verified_pass_rate": 0.5}, "stale_filter": {"verified_pass_rate": 0.375}}
+
+
+def scene_intro(step: int) -> Image.Image:
+    image, draw = terminal_frame("StaleRoll · project walkthrough", "actual run + measured result")
+    draw_text(draw, (78, 138), "A real run-through, not a title card", 42, INK, True)
+    draw_text(draw, (80, 206), "pen = the model's proposal", 27, BLUE, True)
+    draw_text(draw, (80, 252), "marker = the verifier's check", 27, YELLOW, True)
+    draw.rounded_rectangle((80, 360, 1360, 550), radius=18, fill=PANEL, outline="#334655", width=2)
+    command = "PYTHONPATH=src python3 -m staleroll.cli run --policy lora --task-domain code"
+    visible = command[: max(0, min(len(command), step * 12))]
+    draw_text(draw, (116, 412), "$ " + visible, 24, INK)
+    if step >= 6:
+        marker(draw, 114, 468, 560, "START HERE")
+        pen(draw, 1180, 472)
+    draw_text(draw, (82, 660), "StaleRoll · async RL · execution-verified code repair", 20, MUTED)
     return image
 
 
-def scene_setup() -> Image.Image:
-    image, draw = base("The simple question", "01 · Setup", "#2364AA")
-    text(draw, (74, 220), "Can asynchronous workers move faster", 32, "#17202A", True)
-    text(draw, (74, 266), "without quietly lowering answer quality?", 32, "#17202A", True)
-    draw.rounded_rectangle((74, 352, 746, 580), radius=18, fill="#FFFFFF", outline="#D7D3C8", width=2)
-    text(draw, (104, 382), "Task", 20, "#2364AA", True)
-    text(draw, (104, 420), "Implement clamp(x, low, high)", 28, "#17202A", True)
-    text(draw, (104, 478), "The model proposes five complete functions.", 22, "#46515C")
-    text(draw, (104, 518), "Only one survives the hidden tests.", 22, "#46515C")
-    pen_and_marker(draw, 874, 360, 0.8)
-    text(draw, (866, 548), "proposal → check", 22, "#46515C", True)
+def scene_run(step: int) -> Image.Image:
+    image, draw = terminal_frame("staleroll_demo_run", "the command is running")
+    draw_text(draw, (52, 86), "$ PYTHONPATH=src python3 -m staleroll.cli run ", 21, INK)
+    draw_text(draw, (52, 120), "  --policy lora --task-domain code --tasks 20 --seeds 1", 21, BLUE)
+    draw_text(draw, (52, 154), "  --ticks 24 --checkpoint-interval 4 --eval-interval 4", 21, BLUE)
+    lines = [
+        "[StaleRoll] domain=code tasks=20 policy=lora",
+        "[StaleRoll] checkpoint interval: 4 updates",
+        "[StaleRoll] evaluation interval: 4 updates",
+        "sync          verified pass rate   0.5000",
+        "stale_filter  verified pass rate   0.3750",
+        "profile       local adapter updates recorded",
+    ]
+    for i, line in enumerate(lines):
+        color = GREEN if i >= 3 else INK
+        code_line(draw, 260 + i * 54, i + 1, line, highlight=(step >= i + 2), color=color)
+    pen(draw, 1160, 426 if step < 5 else 534)
+    draw_text(draw, (52, 682), "This smoke run is for the walkthrough; the report uses the full 100-task experiment.", 18, MUTED)
     return image
 
 
-def scene_verifier() -> Image.Image:
-    image, draw = base("The verifier sees what the proxy misses", "02 · Execution evidence", "#B15E1D")
-    for y, label, color, desc in [
-        (232, "VISIBLE TESTS", "#E58B3A", "quick signal for the trainer"),
-        (366, "HIDDEN TESTS", "#2364AA", "the score that counts"),
-        (500, "PROXY HACK", "#8B3D35", "visible pass, hidden failure"),
-    ]:
-        draw.rounded_rectangle((86, y, 500, y + 82), radius=14, fill=color)
-        text(draw, (116, y + 25), label, 23, "#FFFFFF", True)
-        text(draw, (570, y + 25), desc, 26, "#46515C")
-    pen_and_marker(draw, 930, 286, 0.85)
-    text(draw, (884, 538), "The marker checks the work", 21, "#B15E1D", True)
+def scene_repair(step: int) -> Image.Image:
+    image, draw = terminal_frame("tasks.py + verifier.py", "a repair is only useful if it executes")
+    draw_text(draw, (52, 86), "Task: implement clamp(x, low, high)", 26, INK, True)
+    code = [
+        "def clamp(x, low, high):",
+        "    return max(low, min(high, x))",
+        "",
+        "visible tests: 5 → 5   |   -2 → 0",
+        "hidden tests: 20 → 10  |   10 → 10",
+    ]
+    for i, line in enumerate(code):
+        code_line(draw, 180 + i * 54, i + 1, line, highlight=(step == 2 and i == 1), color=GREEN if i in (1, 4) else INK)
+    draw.rounded_rectangle((780, 174, 1344, 480), radius=18, fill=PANEL, outline="#334655", width=2)
+    draw_text(draw, (822, 208), "candidate check", 23, YELLOW, True)
+    draw_text(draw, (822, 270), "visible: PASS", 25, GREEN, True)
+    draw_text(draw, (822, 326), "hidden: PASS", 25, GREEN, True)
+    draw_text(draw, (822, 382), "verified: TRUE", 25, GREEN, True)
+    draw_text(draw, (822, 438), "proxy-only: FALSE", 22, MUTED)
+    marker(draw, 810, 312 if step < 3 else 368, 280, "CHECK")
+    pen(draw, 690, 232 if step < 3 else 394)
+    draw_text(draw, (52, 682), "The hidden tests prevent a visible-only shortcut from looking like a win.", 18, MUTED)
     return image
 
 
-def scene_lora() -> Image.Image:
-    image, draw = base("The trainable part is small on purpose", "03 · LoRA training", "#2F7D5A")
-    text(draw, (74, 220), "Frozen encoder", 24, "#46515C", True)
-    draw.rounded_rectangle((74, 274, 406, 474), radius=18, fill="#DDE8F4", outline="#2364AA", width=3)
-    for i in range(4):
-        draw.rectangle((110, 310 + i * 32, 370, 326 + i * 32), fill="#8FB6DC")
-    text(draw, (116, 500), "context + candidate", 18, "#2364AA")
-    draw.line((430, 374, 560, 374), fill="#68737D", width=4)
-    draw.polygon([(560, 374), (532, 360), (532, 388)], fill="#68737D")
-    text(draw, (596, 220), "Trainable LoRA head", 24, "#2F7D5A", True)
-    draw.rounded_rectangle((596, 274, 934, 474), radius=18, fill="#E0F0E8", outline="#2F7D5A", width=3)
-    draw.rectangle((644, 326, 750, 422), fill="#80B99A")
-    draw.rectangle((780, 326, 886, 422), fill="#4D956E")
-    draw.line((750, 374, 780, 374), fill="#2F7D5A", width=5)
-    text(draw, (680, 500), "1,032 parameters", 18, "#2F7D5A", True)
-    for i, label in enumerate(["eval 0", "eval 5", "eval 10", "final"]):
-        x = 1000 + (i % 2) * 128
-        y = 284 + (i // 2) * 112
-        draw.rounded_rectangle((x, y, x + 106, y + 56), radius=10, fill="#F4C16E")
-        text(draw, (x + 15, y + 18), label, 15, "#6A3A16", True)
-    text(draw, (74, 612), "The adapter learns from verified reward; the base representation stays fixed.", 21, "#46515C")
+def scene_lora(step: int) -> Image.Image:
+    image, draw = terminal_frame("src/staleroll/lora_policy.py", "the trainable path")
+    draw_text(draw, (52, 86), "Only the low-rank adapter receives gradients.", 26, INK, True)
+    lines = [
+        "class _LoRAHead(nn.Module):",
+        "    self.down = nn.Linear(dim, rank, bias=False)",
+        "    self.up = nn.Linear(rank, 1, bias=False)",
+        "",
+        "def _adapter_step(self, loss):",
+        "    loss.backward()",
+        "    self.optimizer.step()",
+        "",
+        "def _evaluate_and_checkpoint(self):",
+        "    torch.save(checkpoint, checkpoint_path)",
+    ]
+    for i, line in enumerate(lines):
+        code_line(draw, 156 + i * 44, i + 1, line, highlight=(step in (2, 3) and i in (4, 5, 6)) or (step >= 4 and i in (8, 9)), color=GREEN if i in (4, 8, 9) else INK)
+    marker(draw, 108, 156 + (4 if step < 4 else 8) * 44, 690, "TRAIN" if step < 4 else "SAVE")
+    pen(draw, 900, 156 + (1 if step < 2 else 5 if step < 4 else 9) * 44)
+    draw.rounded_rectangle((930, 210, 1350, 550), radius=18, fill=PANEL, outline="#334655", width=2)
+    draw_text(draw, (972, 246), "checkpoint files", 22, YELLOW, True)
+    for i, label in enumerate(("update-00000.pt", "update-00010.pt", "update-00020.pt", "update-00048.pt")):
+        draw_text(draw, (972, 304 + i * 52), "✓  " + label, 21, GREEN if i < 3 else BLUE)
+    draw_text(draw, (52, 682), "The final run saved 48 checkpoints and 324 adapter updates across the four arms.", 18, MUTED)
     return image
 
 
-def scene_async() -> Image.Image:
-    image, draw = base("Staleness becomes a measured decision", "04 · Controller", "#7B5BA7")
-    labels = [("worker A", 246), ("worker B", 348), ("worker C", 450)]
-    for label, y in labels:
-        text(draw, (82, y - 8), label, 18, "#46515C", True)
-        draw.line((220, y + 10, 1070, y + 10), fill="#C8C1D2", width=3)
-    for x, y, color in [(292, 246, "#2364AA"), (506, 348, "#2364AA"), (714, 450, "#2364AA"), (612, 246, "#E58B3A"), (864, 348, "#2F7D5A")]:
-        draw.ellipse((x, y - 10, x + 22, y + 12), fill=color)
-    draw.line((292, 256, 612, 256), fill="#E58B3A", width=8)
-    text(draw, (308, 214), "old snapshot", 18, "#B15E1D")
-    text(draw, (790, 560), "accept only when lag and KL stay safe", 22, "#7B5BA7", True)
-    pen_and_marker(draw, 1040, 220, 0.45)
+def scene_controller(step: int) -> Image.Image:
+    image, draw = terminal_frame("src/staleroll/controller.py", "lag + KL decide what survives")
+    draw_text(draw, (52, 86), "A rollout can be old without being useless.", 26, INK, True)
+    code = [
+        "lag_steps = current.version - trajectory.behavior_version",
+        "kl = policy_kl(current, behavior, task)",
+        "",
+        "accept = lag_steps <= max_lag and kl <= max_kl",
+        "weight = age_decay * kl_decay * importance_ratio",
+    ]
+    for i, line in enumerate(code):
+        code_line(draw, 174 + i * 56, i + 1, line, highlight=(step >= 3 and i == 3), color=GREEN if i == 3 else INK)
+    draw.line((100, 530, 1260, 530), fill="#4A5A67", width=4)
+    for x, label, color in [(230, "snapshot", BLUE), (620, "worker finishes", YELLOW), (1030, "update", GREEN)]:
+        draw.ellipse((x - 13, 517, x + 13, 543), fill=color)
+        draw_text(draw, (x - 48, 562), label, 18, color, True)
+    marker(draw, 126, 318 if step < 3 else 342, 680, "KEEP")
+    pen(draw, 1030 if step < 3 else 1240, 340)
+    draw_text(draw, (52, 682), "Unsafe stale work is rejected before it can move the adapter.", 18, MUTED)
     return image
 
 
-def scene_results() -> Image.Image:
-    image, draw = base("What the 100-task run actually showed", "05 · Results", "#2364AA")
-    headers = [(80, "Arm"), (340, "LoRA pass"), (570, "Gemini pass"), (800, "LoRA / tick"), (1040, "Gemini / tick")]
-    for x, label in headers:
-        text(draw, (x, 220), label, 18, "#68737D", True)
+def scene_results(step: int) -> Image.Image:
+    image, draw = terminal_frame("artifacts/backend_comparison_final/report.md", "100-task comparison")
+    draw_text(draw, (52, 86), "The result is close — and the gap is visible.", 26, INK, True)
+    columns = [(68, "arm"), (360, "LoRA pass"), (620, "Gemini pass"), (900, "LoRA / tick"), (1180, "Gemini / tick")]
+    for x, label in columns:
+        draw_text(draw, (x, 164), label, 18, MUTED, True)
     rows = [
         ("sync", "0.7951", "0.7839", "0.4180", "0.4143"),
         ("naive async", "0.7552", "0.7747", "0.5916", "0.5986"),
         ("stale filter", "0.7552", "0.7622", "0.5916", "0.5888"),
     ]
     for i, row in enumerate(rows):
-        y = 286 + i * 88
-        draw.rounded_rectangle((66, y - 12, 1194, y + 56), radius=10, fill="#FFFFFF" if i % 2 == 0 else "#EEEAE0")
-        for (x, _), value in zip(headers, row):
-            text(draw, (x, y + 10), value, 22, "#17202A", i == 0)
-    wrapped(draw, (80, 580), "The local adapter nearly matched Gemini on this controller test. Gemini remained slightly stronger for asynchronous quality, while the LoRA path was faster and fully trainable locally.", 1090, 22, "#46515C")
+        y = 236 + i * 100
+        fill = "#263846" if i != 2 else "#4A3D1F"
+        draw.rounded_rectangle((48, y - 16, 1380, y + 58), radius=12, fill=fill)
+        for (x, _), value in zip(columns, row):
+            draw_text(draw, (x, y + 8), value, 24, GREEN if i == 2 else INK, i == 2)
+    marker(draw, 338, 420 if step < 3 else 520, 850, "COMPARE")
+    pen(draw, 1250, 428 if step < 3 else 528)
+    draw_text(draw, (52, 682), "LoRA: 0.5916 verified/tick · Gemini: 0.5888 verified/tick in stale_filter.", 18, MUTED)
     return image
 
 
-def scene_close() -> Image.Image:
-    image, draw = base("The point of the project", "06 · Takeaway", "#2F7D5A")
-    wrapped(draw, (74, 230), "This is not a single benchmark number. It is a reproducible loop: propose, execute, measure, and keep the stale work that is still trustworthy.", 760, 31, "#17202A")
-    pen_and_marker(draw, 910, 288, 0.85)
-    text(draw, (74, 604), "Code, checkpoints, reports, and this video are included in the repository.", 21, "#46515C")
+def scene_close(step: int) -> Image.Image:
+    image, draw = terminal_frame("StaleRoll", "run it yourself")
+    draw_text(draw, (76, 126), "The repo is the demo.", 44, INK, True)
+    draw_text(draw, (78, 194), "Code → verifier → adapter → report", 28, BLUE)
+    draw.rounded_rectangle((76, 298, 1360, 490), radius=18, fill=PANEL, outline="#334655", width=2)
+    lines = [
+        "$ make lora-code-training",
+        "$ make compare-backends",
+        "artifacts/lora_code_training_final2/report.md",
+        "artifacts/backend_comparison_final/report.md",
+        "demo/staleroll_demo.mp4",
+    ]
+    for i, line in enumerate(lines):
+        code_line(draw, 326 + i * 34, i + 1, line, highlight=(step >= i + 2), color=GREEN if i >= 2 else INK)
+    marker(draw, 108, 394 if step < 4 else 462, 930, "OPEN")
+    pen(draw, 1160, 394 if step < 4 else 496)
+    draw_text(draw, (78, 652), "A real run, real checkpoints, real hidden tests, and an honest comparison.", 22, MUTED)
     return image
 
 
-SCENES = [scene_title, scene_setup, scene_verifier, scene_lora, scene_async, scene_results, scene_close]
-NARRATION = [
-    "Here is StaleRoll. I use a simple pen and marker idea throughout: the pen proposes a repair, and the marker checks whether it actually works.",
-    "The project asks one practical question. Can asynchronous rollout workers move faster without quietly lowering the quality of the answers they produce?",
-    "Each task is a complete Python repair. Visible tests give a quick training signal, but hidden tests decide the real score. A visible-only success is recorded as proxy reward hacking.",
-    "The trainable part is deliberately small. A frozen Transformer turns the task and candidate into a representation, and a rank-eight LoRA head learns from verified reward. The run saved evaluations every five updates and checkpoints every ten.",
-    "Workers do not all finish at the same time. StaleRoll measures how old each sample is, compares the old and current policy, and only keeps stale work when the lag and KL are safe.",
-    "On one hundred repair tasks, the local adapter reached a seventy-five point five percent verified pass rate in the stale-filter arm, with slightly higher verified throughput than frozen Gemini. Gemini was still a little stronger on asynchronous quality.",
-    "The result is a complete, inspectable loop: propose, execute, measure, and keep the work that is still trustworthy. The repository contains the code, checkpoints, reports, and this demo.",
-]
+SCENES = [scene_intro, scene_run, scene_repair, scene_lora, scene_controller, scene_results, scene_close]
 
 
-def main() -> None:
-    BUILD.mkdir(exist_ok=True)
-    frames: list[Image.Image] = []
-    durations = [8, 7, 8, 9, 7, 9, 7]
-    for index, scene in enumerate(SCENES):
-        image = scene()
-        frames.extend([image] * (durations[index] * FPS))
-        image.save(BUILD / f"scene-{index:02d}.png")
-    narration = ROOT / "narration.txt"
-    narration.write_text("\n\n".join(NARRATION) + "\n", encoding="utf-8")
-    audio_files: list[Path] = []
+async def build_audio() -> list[Path]:
+    BUILD.mkdir(parents=True, exist_ok=True)
+    import edge_tts
+
+    paths: list[Path] = []
     for index, paragraph in enumerate(NARRATION):
-        audio = BUILD / f"voice-{index:02d}.aiff"
-        subprocess.run(["say", "-v", "Samantha", "-r", "174", "-o", str(audio), paragraph], check=True)
-        audio_files.append(audio)
-    audio = AudioFileClip(str(audio_files[0]))
-    for path in audio_files[1:]:
-        next_clip = AudioFileClip(str(path))
-        audio = audio.with_duration(audio.duration + next_clip.duration)
-        # MoviePy's concatenate_videoclips is not needed for voice; the audio
-        # track is assembled by the ffmpeg writer from the individual files.
-        next_clip.close()
-    # Use the scene timings as the visual track and the first voice file as a
-    # conservative fallback if a local MoviePy build cannot concatenate audio.
-    # The voice files are concatenated explicitly below with ffmpeg through
-    # MoviePy's audio concatenate helper.
-    from moviepy import concatenate_audioclips
+        path = BUILD / f"voice-{index:02d}.mp3"
+        communicate = edge_tts.Communicate(paragraph, "en-US-EmmaNeural", rate="-7%", pitch="+0Hz")
+        await communicate.save(str(path))
+        paths.append(path)
+    return paths
 
-    voice = concatenate_audioclips([AudioFileClip(str(path)) for path in audio_files])
-    video = ImageSequenceClip([str(BUILD / f"scene-{i:02d}.png") for i in range(len(SCENES))], durations=durations)
+
+def render() -> None:
+    audio_paths = asyncio.run(build_audio())
+    audio_clips = [AudioFileClip(str(path)) for path in audio_paths]
+    durations = [max(5.0, clip.duration + 0.8) for clip in audio_clips]
+    video_parts = []
+    for scene_index, (scene, duration) in enumerate(zip(SCENES, durations)):
+        paths: list[str] = []
+        count = 7
+        for frame_index in range(count):
+            frame_path = BUILD / f"scene-{scene_index:02d}-{frame_index:02d}.png"
+            scene(frame_index).save(frame_path)
+            paths.append(str(frame_path))
+        video_parts.append(ImageSequenceClip(paths, durations=[duration / count] * count))
+    video = concatenate_videoclips(video_parts, method="compose")
+    voice = concatenate_audioclips(audio_clips)
     video = video.with_audio(voice)
-    video.write_videofile(str(OUTPUT), fps=FPS, codec="libx264", audio_codec="aac", bitrate="2200k", logger=None)
+    video.write_videofile(str(OUTPUT), fps=FPS, codec="libx264", audio_codec="aac", bitrate="2800k", logger=None)
+    for clip in video_parts:
+        clip.close()
     video.close()
     voice.close()
-    audio.close()
+    for clip in audio_clips:
+        clip.close()
     print(OUTPUT)
 
 
 if __name__ == "__main__":
-    main()
+    render()

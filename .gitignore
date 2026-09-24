@@ -3,6 +3,7 @@ __pycache__/
 .venv/
 artifacts/latest/
 demo/.build/
+demo/.build-v2/
 
 # Large generated run logs and intermediate checkpoints stay local; the
 # checked-in reports and comparison summaries are the reviewable artifacts.

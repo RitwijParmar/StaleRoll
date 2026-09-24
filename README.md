@@ -95,7 +95,7 @@ with `make gcp-frozen-code`, and regenerate the comparison with
 
 ## Demo
 
-The narrated demo is a real MP4 asset, not a placeholder: [watch the StaleRoll demo](demo/staleroll_demo.mp4). It uses a conversational voiceover and a pen-and-marker metaphor to walk through the verifier, the LoRA adapter, the staleness controller, and the measured 100-task comparison. The poster is [here](demo/staleroll_demo_poster.png), and the narration/build source is in [`demo/`](demo/).
+The narrated demo is a real MP4 asset, not a placeholder: [watch the StaleRoll demo](demo/staleroll_demo.mp4). It runs through the command, shows smoke-run output, uses a moving blue pen pointer and yellow marker highlights over the code and measurements, and explains the verifier, LoRA adapter, staleness controller, and measured 100-task comparison. The poster is [here](demo/staleroll_demo_poster.png), and the narration/build source is in [`demo/`](demo/).
 
 The accumulated per-run request audit is in
 `artifacts/cloud_usage_summary.json`; it records the earlier 572 requests and

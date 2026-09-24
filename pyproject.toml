@@ -12,6 +12,7 @@ dependencies = []
 [project.optional-dependencies]
 model = ["torch>=2.0"]
 cloud = ["requests>=2.31"]
+demo = ["edge-tts>=7.0", "moviepy>=2.0", "pillow>=10.0"]
 
 [project.scripts]
 staleroll = "staleroll.cli:main"
