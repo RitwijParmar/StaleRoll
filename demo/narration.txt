@@ -1,0 +1,13 @@
+Here is StaleRoll. I use a simple pen and marker idea throughout: the pen proposes a repair, and the marker checks whether it actually works.
+
+The project asks one practical question. Can asynchronous rollout workers move faster without quietly lowering the quality of the answers they produce?
+
+Each task is a complete Python repair. Visible tests give a quick training signal, but hidden tests decide the real score. A visible-only success is recorded as proxy reward hacking.
+
+The trainable part is deliberately small. A frozen Transformer turns the task and candidate into a representation, and a rank-eight LoRA head learns from verified reward. The run saved evaluations every five updates and checkpoints every ten.
+
+Workers do not all finish at the same time. StaleRoll measures how old each sample is, compares the old and current policy, and only keeps stale work when the lag and KL are safe.
+
+On one hundred repair tasks, the local adapter reached a seventy-five point five percent verified pass rate in the stale-filter arm, with slightly higher verified throughput than frozen Gemini. Gemini was still a little stronger on asynchronous quality.
+
+The result is a complete, inspectable loop: propose, execute, measure, and keep the work that is still trustworthy. The repository contains the code, checkpoints, reports, and this demo.
